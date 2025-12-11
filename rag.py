@@ -110,7 +110,6 @@ Specs:
     - Storage
     - Screen size
 Price
-Product link
 ![Product Image](image_url)
 Use the image_url EXACTLY as provided in the context — do NOT modify, rewrite, reorder, or reconstruct the URL in any way.
 Insert the image using Markdown in this exact format:
@@ -123,7 +122,8 @@ def format_docs(docs):
 
     for d in docs:
         meta = d.metadata
-        print(meta.get('image_url'))
+        print(meta)
+        print(meta.get('product_image'))
         content = f"""
         Product Name: {meta.get('product_name')}
         Description: {meta.get('description')}
@@ -136,12 +136,11 @@ def format_docs(docs):
         SCREEN SIZE: {meta.get('screen_size_inches')} inches
         SCREEN REFERESH RATE: {meta.get('screen_refresh_rate')} Hz
         Tags: {meta.get('tags')}
-        PRODUCT URL: {meta.get('product_url')}
         IMAGE URL: {meta.get('image_url')}
         """.strip()
         formatted.append(content)
 
-    # print("\n\n---\n\n".join(formatted))
+    print("\n\n---\n\n".join(formatted))
     return "\n".join(formatted)
 
 
